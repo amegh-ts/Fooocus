@@ -113,9 +113,9 @@ See also the common problems and troubleshoots [here](troubleshoot.md).
 
 | Colab | Info
 | --- | --- |
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lllyasviel/Fooocus/blob/main/fooocus_colab.ipynb) | Fooocus Official
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/amegh-ts/Fooocus/blob/main/fooocus_colab.ipynb) | Fooocus Official
 
-In Colab, you can modify the last line to `!python entry_with_update.py --share --always-high-vram` or `!python entry_with_update.py --share --always-high-vram --preset anime` or `!python entry_with_update.py --share --always-high-vram --preset realistic` for Fooocus Default/Anime/Realistic Edition.
+In Colab, you can modify the last line to `!python entry_with_update.py --cloudflared --always-high-vram` or `!python entry_with_update.py --cloudflared --always-high-vram --preset anime` or `!python entry_with_update.py --cloudflared --always-high-vram --preset realistic` for Fooocus Default/Anime/Realistic Edition.
 
 You can also change the preset in the UI. Please be aware that this may lead to timeouts after 60 seconds. If this is the case, please wait until the download has finished, change the preset to initial and back to the one you've selected or reload the page.
 
@@ -284,9 +284,10 @@ Given different goals, the default models and configs of Fooocus are different:
 Note that the download is **automatic** - you do not need to do anything if the internet connection is okay. However, you can download them manually if you (or move them from somewhere else) have your own preparation.
 
 ## UI Access and Authentication
-In addition to running on localhost, Fooocus can also expose its UI in two ways: 
+In addition to running on localhost, Fooocus can also expose its UI in three ways: 
 * Local UI listener: use `--listen` (specify port e.g. with `--port 8888`). 
-* API access: use `--share` (registers an endpoint at `.gradio.live`).
+* API access via Gradio: use `--share` (registers an endpoint at `.gradio.live`).
+* API access via Cloudflare: use `--cloudflared` (registers an endpoint at `.trycloudflare.com`).
 
 In both ways the access is unauthenticated by default. You can add basic authentication by creating a file called `auth.json` in the main directory, which contains a list of JSON objects with the keys `user` and `pass` (see example in [auth-example.json](./auth-example.json)).
 
@@ -382,7 +383,7 @@ entry_with_update.py  [-h] [--listen [IP]] [--port PORT]
                       [--always-offload-from-vram]
                       [--pytorch-deterministic] [--disable-server-log]
                       [--debug-mode] [--is-windows-embedded-python]
-                      [--disable-server-info] [--multi-user] [--share]
+                      [--disable-server-info] [--multi-user] [--share] [--cloudflared]
                       [--preset PRESET] [--disable-preset-selection]
                       [--language LANGUAGE]
                       [--disable-offload-from-vram] [--theme THEME]
