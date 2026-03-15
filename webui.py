@@ -21,10 +21,7 @@ from extras.inpaint_mask import SAMOptions
 from modules.sdxl_styles import legal_style_names
 from modules.private_logger import get_current_html_path
 from modules.ui_gradio_extensions import reload_javascript
-from modules.auth import auth_enabled, check_auth
 from modules.util import is_json
-import modules.cloudflared as cloudflared
-
 def get_task(*args):
     args = list(args)
     args.pop(0)
@@ -1117,9 +1114,6 @@ def dump_default_english_config():
 
 
 # dump_default_english_config()
-
-if args_manager.args.cloudflared:
-    cloudflared.start_cloudflare_tunnel(args_manager.args.port if args_manager.args.port else 7865)
 
 shared.gradio_root.launch(
     inbrowser=args_manager.args.in_browser,
